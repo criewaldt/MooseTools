@@ -1,0 +1,172 @@
+<head>
+<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Theme CSS -->
+<link href="static/css/freelancer.min.css" rel="stylesheet">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+
+ <!-- Custom Fonts -->
+<link href="static/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+</head>
+
+
+<body>
+    <div class="container">
+    
+
+        
+        <div class="row text-center">
+            <div class="col-xs-3"></div>
+            <div class="col-xs-6">
+                <h1>Checkout Report</h1>
+                
+                
+                <div class="row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-8 text-center well">
+                          
+                          <p>{{data.date}} - {{data.shiftType}}</p>
+                    </div>
+                    <div class="col-xs-2"></div>
+                </div>
+                
+                
+            </div>
+            <div class="col-xs-3"></div>
+        </div>
+        <!-- end of row -->
+
+        
+    </div>
+    <!-- end of container -->
+    
+<div class="container text-center">
+
+  
+  <h2>Staff Info</h2>
+  <table class="table table-striped">
+    
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Hours</th>
+        <th>Job Type</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for server in data.employeeData.serve %}
+      <tr>
+        <td>{{server.name}}</td>
+        <td>{{server.hours}}</td>
+        <td>Server</td>
+      </tr>
+    {% endfor %}
+    
+    {% for host in data.employeeData.host %}
+      <tr>
+        <td>{{host.name}}</td>
+        <td>{{host.hours}}</td>
+        <td>Host</td>
+      </tr>
+    {% endfor %}
+    
+    {% for swing in data.employeeData.swing %}
+      <tr>
+        <td>{{swing.name}}</td>
+        <td>{{swing.hours}}</td>
+        <td>Swing</td>
+      </tr>
+    {% endfor %}
+    
+    {% for other in data.employeeData.otherEmp %}
+      <tr>
+        <td>{{other.name}}</td>
+        <td>{{other.hours}}</td>
+        <td>{{other.jobType}}</td>
+      </tr>
+    {% endfor %}
+  
+    </tbody>
+  </table>
+  
+  
+  
+  <h2>Shift Info</h2>
+  
+  <table class="table table-striped">
+    <thead>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Food Sales</td>
+        <td>${{data.food}}</td>
+      </tr>
+      <tr>
+        <td>Alcohol Sales</td>
+        <td>${{data.alcohol}}</td>
+      </tr>
+      <tr>
+        <td>Net Sales</td>
+        <td>${{data.sales}}</td>
+      </tr>
+      <tr>
+        <td>Comps</td>
+        <td>{{data.comps}}</td>
+      </tr>
+      <tr>
+        <td>Bat Tipout</td>
+        <td>${{data.bartip}}</td>
+      </tr>
+      <tr>
+        <td>Server Hourly Rate</td>
+        <td>${{data.hourlyRate.net}}/h</td>
+      </tr>
+      <tr>
+        <td>** 1% Support Tipout (if Server hourly >= $24/h)</td>
+        <td>${{data.hourlyRate.net}}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><b>Deposit</b></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Wait 1</td>
+        <td>somehting</td>
+      </tr>
+      <tr>
+        <td>Wait 2</td>
+        <td>something</td>
+      </tr>
+      <tr>
+        <td>Net Deposit</td>
+        <td><b>Something</b></td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+  
+</div>
+
+
+</body>

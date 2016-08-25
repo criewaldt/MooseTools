@@ -1,0 +1,302 @@
+<head>
+<script   src="static/js/jquery-3.1.0.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="static/css/bootstrap.min.css" >
+
+<!-- Theme CSS -->
+<link href="static/css/freelancer.min.css" rel="stylesheet">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/angular.min.js"></script>
+
+ <!-- Custom Fonts -->
+<link href="static/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<style>
+    fieldset{
+    background: #FCFCFC;
+    padding: 16px;
+    border: 1px solid #D5D5D5;
+}
+.addfields{
+    margin: 10px 0;
+}
+
+#choicesDisplay {
+    padding: 10px;
+    background: rgb(227, 250, 227);
+    border: 1px solid rgb(171, 239, 171);
+    color: rgb(9, 56, 9);
+}
+.remove{
+    background: #C76868;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 21px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    padding: 4px 9px;
+    vertical-align: top;
+    line-height: 100%;   
+}
+input[type="text"],
+select{
+    padding:5px;
+}
+</style>
+
+</head>
+
+
+<body>
+    <div class="container" ng-app="angularjs-starter" ng-controller="MainCtrl">
+    
+    
+        <form name="input" action="/submit" method="POST">
+            
+        <div class="row text-center">
+          <div class="col-xs-12">
+            <h1>Tatooed Moose</h1>
+            <img src="static/imgs/moose.png">
+            
+            <h1>Checkout Report</h1>
+            <div class="well">
+            <p>This page is designed to make the checkout process faster and easier. Fill out the fields below to generate your checkout report.</p>
+            </div>
+            
+          </div>
+
+        </div>
+        <!-- end of row -->
+        
+        <div class="row text-center">
+            
+            <H1>Staff Info</H1>
+            <p><i>Enter all tipped staff that worked the shift</i></p>
+            <br>
+            <div class="col-xs-12">
+                <div data-ng-repeat="choice in choices">
+                
+                <label for="type">Job Type: </label>
+                <select id="type" name="jobType" ng-model="choice.type" required>
+                    <option value=""></option>
+                    <option ng-repeat="option in jobTypes" value="{[{option.id}]}">{[{option.name}]}</option>
+                </select>&nbsp;
+                <label for="name">Name: </label>
+                <input type="text" id='name' ng-model="choice.name" placeholder=" e.g. Chris" required=required/>&nbsp;&nbsp;&nbsp;
+                <label for="hours">Hours: </label>
+                <input type="number" id='hours' step="any" ng-model="choice.hours" placeholder=" e.g. 4 or 4.5" required=required/>&nbsp;&nbsp;&nbsp;
+                <button form='fornothing' class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
+                <hr>
+                </div>
+                <button form='fornothing' class="btn btn-primary" ng-click="addNewChoice()">Add Staff Member</button>
+            </div>
+            
+            
+            
+            
+        </div>
+        <!-- end of row -->
+        <br>
+        
+        <div class="row text-center">
+            <div class="col-xs-3"></div>
+            <div class="col-xs-6">
+                <h1>Cash in the Bag</h1>
+                <p><i>This is the total amount of cash in the bag at the end of the shift</i></p>
+                <br>
+                
+                
+                <p>Total Cash:</p>
+                <div class="row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-8 text-center">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input type="number" step="0.01" pattern="[0-9]*" name='cash' step="any" class="form-control" placeholder=" e.g. 478" required=required aria-label="Amount (to the nearest dollar)"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <br>
+                
+                
+            </div>
+            <div class="col-xs-3"></div>
+        </div>
+        <!-- end of row -->
+        
+        <div class='row text-center'>
+            <h1>Checkout Info</h1>
+        
+            <div class='row text-center'>
+                <div class='col-xs-6 text-center'>
+                    <h3>Wait 1</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-8">
+                            <label for="s1_food">Food Sales:</label>
+                            <input class="form-control" type="number" step="any" name='s1_food' placeholder=" e.g. 1190.15" required=required/><br>
+                            
+                            <label for="s1_liquor">Liquor Sales: </label>
+                            <input type="number" class="form-control" step="any" name='s1_liquor' placeholder=" e.g. 561.41" required=required/><br>
+                            <label for="s1_wine">Wine Sales: </label>
+                            <input type="number" class="form-control" step="any" name='s1_wine' placeholder=" e.g. 256.87" required=required/><br>
+                            <label for="s1_beer">Beer Sales: </label>
+                            <input type="number" class="form-control" step="any" name='s1_beer' placeholder=" e.g. 489.21" required=required/><br>
+                            <br>
+                            <div class="col-xs-2"></div>
+                            <div class="col-xs-8">
+                                <label for="s1_comps">Comps: </label>
+                                <input type="number" class="form-control" step="any" name='s1_comps' placeholder=" e.g. 1" required=required/><br><br>
+                            </div>
+                            <div class="col-xs-2"></div>
+                            
+                            <br>
+                            <label for="s1_netsales">Net Sales: </label>
+                            <input type="number" class="form-control" step="any" name='s1_netsales' placeholder=" e.g. 1978.23" required=required/><br>
+                            <br>
+                            <label for="s1_deposit">Deposit: </label>
+                            <input type="number" class="form-control" step="any" name='s1_deposit' placeholder=" e.g. 213.22 or -213.22" required=required/><br>
+                        </div>
+                        <div class="col-xs-2"></div>
+                    </div>
+                    
+                </div>
+                
+                <div class="col-xs-2"></div>
+                
+                <div class='col-xs-6 text-center'>
+                    <h3>Wait 2</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-8">
+                            <label for="s2_food">Food Sales:</label>
+                            <input class="form-control" type="number" step="any" name='s2_food' placeholder=" e.g. 1190.15" required=required/><br>
+                            
+                            <label for="s2_liquor">Liquor Sales: </label>
+                            <input type="number" class="form-control" step="any" name='s2_liquor' placeholder=" e.g. 561.41" required=required/><br>
+                            <label for="s2_wine">Wine Sales: </label>
+                            <input type="number" class="form-control" step="any" name='s2_wine' placeholder=" e.g. 256.87" required=required/><br>
+                            <label for="s2_beer">Beer Sales: </label>
+                            <input type="number" class="form-control" step="any" name='s2_beer' placeholder=" e.g. 489.21" required=required/><br>
+                            <br>
+                            
+                            <div class="col-xs-2"></div>
+                            <div class="col-xs-8">
+                                <label for="s2_comps">Comps: </label>
+                                <input type="number" class="form-control" step="any" name='s2_comps' placeholder=" e.g. 1" required=required/><br><br>
+                            </div>
+                            <div class="col-xs-2"></div>
+                            
+                            <br>
+                            <label for="s2_netsales">Net Sales: </label>
+                            <input type="number" class="form-control" step="any" name='s2_netsales' placeholder=" e.g. 1978.23" required=required/><br>
+                            <br>
+                            <label for="s2_deposit">Deposit: </label>
+                            <input type="number" class="form-control" step="any" name='s2_deposit' placeholder=" e.g. 213.22 or -213.22" required=required/><br>
+                        </div>
+                        <div class="col-xs-2"></div>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- end of row -->
+        </div>
+        <!-- end of row -->
+        
+        <div class="row text-center well">
+            <div class="col-xs-3"></div>
+            <div class='col-xs-6'>
+                <label for="name">Your Name:</label>
+                <input class="form-control" type="text" step="any" name='name' placeholder="Enter your name" required=required/><br>
+                            
+                <button type="submit" ng-click="" class="btn btn-success btn-lg btn-block">Submit</button>
+                
+                
+            </div>
+            <div class="col-xs-3"></div>
+        </div>
+        <!-- end of row -->
+        <br>
+        
+        <div class="row text-center">
+            
+            <div class="col-xs-12">
+                <small>If you have any questions, contact Chris at: <b>347 813 1936</b> or <b>criewaldt@gmail.com</b></small>
+            </div>
+        </div>
+        
+        <input type="text" style="visibility: hidden" name="choices" value="{[{ choices }]}"/>
+        <!--style="visibility: hidden"-->
+        
+        </form>
+        
+    </div>
+    <!-- end of container -->
+    
+<script>
+/* ------------------------------------------------------- 
+
+* Angular Script
+
+---------------------------------------------------------*/
+
+
+
+
+var app = angular.module('angularjs-starter', []);
+
+  app.config(function($interpolateProvider, $httpProvider){         
+        $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+    })
+
+  app.controller('MainCtrl', function($scope) {
+
+  $scope.choices = [{id: 'choice1'}];
+  
+  $scope.jobTypes = [
+    {name:'Server', id:'server'},
+    {name:'Host', id:'host'},
+    {name:'Swing', id:'swing'},
+  ];
+  
+  $scope.addNewChoice = function() {
+    var newItemNo = $scope.choices.length+1;
+    $scope.choices.push({'id':'choice'+newItemNo});
+  };
+  
+  $scope.sendInfo = function() {
+    console.log($scope.choices);
+  };
+    
+  $scope.removeChoice = function() {
+    var lastItem = $scope.choices.length-1;
+    $scope.choices.splice(lastItem);
+  };
+  
+  $scope.services = [
+    {ServiceID: 'server', ServiceName: 'Server'},
+    {ServiceID: 'host', ServiceName: 'Host'},
+    {ServiceID: 'swing', ServiceName: 'Swing'},
+  ];
+  
+ 
+     
+  
+  
+  
+});
+  
+  
+  
+ 
+  
+</script>
+
+
+</body>
