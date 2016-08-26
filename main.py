@@ -1,15 +1,11 @@
 from flask import Flask, render_template, request, flash
 import json
 import datetime
-from checkout import Checkout, CheckoutTest
+from checkout import Checkout, CheckoutTest, q_round
 
 # Initialize the Flask application
 app = Flask(__name__)
 app.secret_key = 'sdfsklkj987923nk4jh23'
-
-#helper functions
-def q_round(x):
-    return round(x*4)/4
 
 # Define a route for the default URL, which loads the form
 @app.route('/')
@@ -22,24 +18,27 @@ def form():
 @app.route('/submit', methods=['POST'])
 def generate_report():
 
-    cash = request.form['cash']
-    s1_food = float(request.form['s1_food'])
-    s1_liquor = float(request.form['s1_liquor'])
-    s1_beer = float(request.form['s1_beer'])
-    s1_wine = float(request.form['s1_wine'])
-    s1_nabev = request.form['s1_nabev']
-    s1_comps = float(request.form['s1_comps'])
-    s1_netsales = float(request.form['s1_netsales'])
-    s1_deposit = float(request.form['s1_deposit'])
+    data = {}
+    
+    data['cash'] = request.form['cash']
+    
+    data['s1_food'] = float(request.form['s1_food'])
+    data['s1_liquor']  = float(request.form['s1_liquor'])
+    data['s1_beer'] = float(request.form['s1_beer'])
+    data['s1_wine'] = float(request.form['s1_wine'])
+    data['s1_nabev'] = request.form['s1_nabev']
+    data['s1_comps'] = float(request.form['s1_comps'])
+    data['s1_netsales'] = float(request.form['s1_netsales'])
+    data['s1_deposit'] = float(request.form['s1_deposit'])
 
-    s2_food = float(request.form['s2_food'])
-    s2_liquor = float(request.form['s2_liquor'])
-    s2_beer = float(request.form['s2_beer'])
-    s2_wine = float(request.form['s2_wine'])
-    s2_nabev = request.form['s2_nabev']
-    s2_comps = float(request.form['s2_comps'])
-    s2_netsales = float(request.form['s2_netsales'])
-    s2_deposit = float(request.form['s2_deposit'])
+    data['s2_food'] = float(request.form['s2_food'])
+    data['s2_liquor'] = float(request.form['s2_liquor'])
+    data['s2_beer'] = float(request.form['s2_beer'])
+    data['s2_wine'] = float(request.form['s2_wine'])
+    data['s2_nabev'] = request.form['s2_nabev']
+    data['s2_comps'] = float(request.form['s2_comps'])
+    data['s2_netsales'] = float(request.form['s2_netsales'])
+    data['s2_deposit'] = float(request.form['s2_deposit'])
 
     net_food = s1_food + s2_food
     net_alcohol = (s1_liquor + s1_beer + s1_wine)+(s2_liquor + s2_beer + s2_wine)
