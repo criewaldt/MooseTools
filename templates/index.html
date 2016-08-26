@@ -1,28 +1,17 @@
-
-
 <head>
-<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+<script   src="static/js/jquery-3.1.0.min.js"></script>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="static/css/bootstrap.min.css" >
 
 <!-- Theme CSS -->
 <link href="static/css/freelancer.min.css" rel="stylesheet">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/angular.min.js"></script>
 
  <!-- Custom Fonts -->
 <link href="static/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
 
 <style>
     fieldset{
@@ -57,157 +46,245 @@ select{
     padding:5px;
 }
 </style>
-</head>
-<body>
-<form name="input" action="/submit" method="POST">
-    <div class="container" ng-app="angularjs-starter" ng-controller="MainCtrl">
-       
-    <section>
-    <div class="row text-center">
-        <div class="col-xs-12 text-center">
-        <h1>Tatooed Moose</h1>
-        <img src="static/imgs/moose.png">
-        
-        <h1>Checkout Calculator</h1>
-        <p>This page is designed to make the checkout process faster and easier. If you have any questions contact Chris at: <b>347 813 1936</b>
-        or <b>criewaldt@gmail.com</b></p>
-        <br>
-        </div>
-    </div>
-    </section>
-    <section>
-    <div class="row text-center">
-        <div class="col-xs-12 text-center">
-        <H1>Staff Info</H1>
-        <p><i>Enter all tipped staff that worked the shift</i></p>
-        
-        </div>
-    </div>
-    
-    <div class='row' class="form-group row text-center" data-ng-repeat="choice in choices">     
-        <div class="col-xs-12 text-center">
-            <label for="type">Job Type: </label>
-            <select id="type" name="singleSelect" ng-model="choice.type" required>
-                <option value=""></option>
-              <option ng-repeat="option in jobTypes" value="{[{option.id}]}">{[{option.name}]}</option>
-            </select>&nbsp;
-          <label for="name">Name: </label>
-          <input type="text" id='name' ng-model="choice.name" placeholder=" e.g. Chris" required=True>&nbsp;&nbsp;&nbsp;
-          <label for="hours">Hours: </label>
-          <input type="number" id='hours' step="any" ng-model="choice.hours" placeholder=" e.g. 4 or 4.5" required=True>&nbsp;&nbsp;&nbsp;
-          <button class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
-          
-        </div>
-        <br><br>
-            
-    </div>
-    <div class='row'>
-        <div class="col-xs-12 text-center">
-            <br>
-            <button class="btn btn-primary" ng-click="addNewChoice()">Add Staff Member</button>
-        </div>
-    </div>
-    </section>
-    
-    
-    <section>
-    <div class="row text-center">
-        <div class="col-xs-12 text-center">
-            <h1>Cash in the Bag</h1>
-            <p><i>This is the total amount of cash in the bag at the end of the shift</i></p>
-            <label for="cash">Total Cash: <b>$</b></label>
-            <input type="number" step="any" id='cash' placeholder=" e.g. 478" required=True>
-        </div>
-    </div>
-    </section>
-    
-    
-    <section>
-    <div class='row text-center'>
-    <h1>Checkout Info</h1>
-    </div>
-    <div class='row text-center'>
-        <div class='col-xs-5 text-center'>
-            <h3>Checkout 1</h3>
-            <hr>
-            <div class="row">
-                <div class="col-xs-12">
-                    <label for="s1_food">Food Sales:</label>
-                    <input class="form-control" type="number" step="any" id='s1_food' placeholder=" e.g. 1190.15" required=True><br>
-                </div>
-            </div>
-            <label for="s1_liquor">Liquor Sales: </label>
-            <input type="number" class="form-control" step="any" id='s1_liquor' placeholder=" e.g. 561.41" required=True><br>
-            <label for="s1_wine">Wine Sales: </label>
-            <input type="number" class="form-control" step="any" id='s1_wine' placeholder=" e.g. 256.87" required=True><br>
-            <label for="s1_beer">Beer Sales: </label>
-            <input type="number" class="form-control" step="any" id='s1_beer' placeholder=" e.g. 489.21" required=True><br>
-            <br>
-            <label for="s1_comps">Comps: </label>
-            <input type="number" class="form-control" step="one" id='s1_comps' placeholder=" e.g. 1" required=True><br><br>
-            <br>
-            <label for="s1_netsales">Net Sales: </label>
-            <input type="number" class="form-control" step="any" id='s1_netsales' placeholder=" e.g. 1978.23" required=True><br>
-            <br>
-            <label for="s1_deposit">Deposit: </label>
-            <input type="number" class="form-control" step="any" id='s1_deposit' placeholder=" e.g. 213.22 or -213.22" required=True><br>
-        </div>
-        
-        <div class="col-xs-2"></div>
-        
-        <div class='col-xs-5 text-center'>
-            <h3>Checkout 2</h3>
-            <hr>
-            <div class="row">
-                <div class="col-xs-12">
-                    <label for="s2_food">Food Sales:</label>
-                    <input class="form-control" type="number" step="any" id='s2_food' placeholder=" e.g. 1190.15" required=True><br>
-                </div>
-            </div>
-            <label for="s2_liquor">Liquor Sales: </label>
-            <input type="number" class="form-control" step="any" id='s2_liquor' placeholder=" e.g. 561.41" required=True><br>
-            <label for="s2_wine">Wine Sales: </label>
-            <input type="number" class="form-control" step="any" id='s2_wine' placeholder=" e.g. 256.87" required=True><br>
-            <label for="s2_beer">Beer Sales: </label>
-            <input type="number" class="form-control" step="any" id='s2_beer' placeholder=" e.g. 489.21" required=True><br>
-            <br>
-            <label for="s2_comps">Comps: </label>
-            <input type="number" class="form-control" step="one" id='s2_comps' placeholder=" e.g. 1" required=True><br><br>
-            <br>
-            <label for="s2_netsales">Net Sales: </label>
-            <input type="number" class="form-control" step="any" id='s2_netsales' placeholder=" e.g. 1978.23" required=True><br>
-            <br>
-            <label for="s2_deposit">Deposit: </label>
-            <input type="number" class="form-control" step="any" id='s2_deposit' placeholder=" e.g. 213.22 or -213.22" required=True><br>
-        </div>
-    </div>
-    </section>
-    
-    <section>
-    <div class="row text-center">
-        <div class='col-xs-12'>
-            <input type="text" id="Cchoices" style="visibility: hidden" value="{[{ choices }]}">
-            <h1>Generate Report</h1>
-            
-            <button type="submit" class="btn btn-success btn-lg">Submit</button>
-            
-            
-        </div>
-    
-    </div>
-    </section>
-</form>
-</body>
 
+</head>
+
+
+<body>
+    <div class="container" ng-app="angularjs-starter" ng-controller="MainCtrl">
+    
+    
+        <form name="input" action="/submit" method="POST">
+            
+        <div class="row text-center">
+          <div class="col-xs-12">
+            <h1>Tatooed Moose</h1>
+            <img src="static/imgs/moose.png">
+            
+            <h1>Checkout Report</h1>
+            <br>
+            <div class="alert alert-warning">
+                <strong>Warning:</strong> Take out any employee banks<strong> before</strong> using this form.
+            </div>
+            
+          </div>
+
+        </div>
+        <!-- end of row -->
+        
+        <div class="row text-center">
+            
+            <H1>Staff Info</H1>
+            <p><i>Enter all tipped staff that worked the shift</i></p>
+            <br>
+            <div class="col-xs-12">
+                <div data-ng-repeat="choice in choices">
+                
+                <label for="type">Job Type: </label>
+                <select id="type" name="jobType" ng-model="choice.type" required>
+                    <option value=""></option>
+                    <option ng-repeat="option in jobTypes" value="{[{option.id}]}">{[{option.name}]}</option>
+                </select>&nbsp;
+                <label for="name">Name: </label>
+                <input type="text" id='name' ng-model="choice.name" placeholder=" e.g. Chris" required=required/>&nbsp;&nbsp;&nbsp;
+                <label for="hours">Hours: </label>
+                <input type="number" id='hours' step="any" ng-model="choice.hours" placeholder=" e.g. 4 or 4.5" required=required/>&nbsp;&nbsp;&nbsp;
+                <button form='fornothing' class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
+                <hr>
+                </div>
+                <button form='fornothing' class="btn btn-primary" ng-click="addNewChoice()">Add Staff Member</button>
+            </div>
+            
+            
+            
+            
+        </div>
+        <!-- end of row -->
+        <br>
+        
+        <div class="row text-center">
+            <div class="col-xs-3"></div>
+            <div class="col-xs-6">
+                <h1>Cash in the Bag</h1>
+                <p><i>This is the total amount of cash in the bag at the end of the shift</i></p>
+                <br>
+                
+                
+                <p>Total Cash:</p>
+                <div class="row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-8 text-center">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input type="number" step="1" pattern="[0-9]*" name='cash' step="any" class="form-control" placeholder=" e.g. 478" required=required aria-p="Amount (to the nearest dollar)"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <br>
+                
+                
+            </div>
+            <div class="col-xs-3"></div>
+        </div>
+        <hr>
+        <!-- end of row -->
+        
+        <div class='row text-center'>
+            <h1>Checkout Info</h1>
+        
+            <div class='row text-center'>
+                <div class='col-xs-12 text-center'>
+                    <h3>Wait 1</h3>
+                    <div class="row">
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-8">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">W1 Food Sales</span>
+                                <input class="form-control" type="number" step=".01" name='s1_food' placeholder=" e.g. 1190.15" required=required/><br>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">W1 Liquor Sales</span>
+                                <input type="number" class="form-control" step=".01" name='s1_liquor' placeholder=" e.g. 561.41" required=required/><br>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">W1 Wine Sales</span>
+                                <input type="number" class="form-control" step=".01" name='s1_wine' placeholder=" e.g. 256.87" required=required/><br>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">W1 Beer Sales</span>
+                                <input type="number" class="form-control" step=".01" name='s1_beer' placeholder=" e.g. 489.21" required=required/><br>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">W1 Other Beverage Sales</span>
+                                <input type="number" class="form-control" step=".01" name='s1_nabev' placeholder=" e.g. 489.21" required=required/><br>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">W1 Comps</span>
+                                <input type="number" class="form-control" step="1" name='s1_comps' placeholder=" e.g. 1" required=required/><br>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">W1 Net Sales</span>
+                                <input type="number" class="form-control" step=".01" name='s1_netsales' placeholder=" e.g. 1978.23" required=required/><br>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">W1 Deposit</span>
+                                <input type="number" class="form-control" step=".01" name='s1_deposit' placeholder=" e.g. 213.22 or -213.22" required=required/><br>
+                            </div>
+                        </div>
+                        <div class="col-xs-2"></div>
+                    </div>
+                    
+                </div>
+                
+                <div class="col-xs-2"></div>
+                
+                <div class='col-xs-12 text-center'>
+                    <hr>
+                    <h3>Wait 2</h3>
+                    <div class="row">
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-8">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">W2 Food Sales</span>
+                                <input class="form-control" type="number" step=".01" name='s2_food' placeholder=" e.g. 1190.15" required=required/><br>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">W2 Liquor Sales</span>
+                                <input type="number" class="form-control" step=".01" name='s2_liquor' placeholder=" e.g. 561.41" required=required/><br>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">W2 Wine Sales</span>
+                                <input type="number" class="form-control" step=".01" name='s2_wine' placeholder=" e.g. 256.87" required=required/><br>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">W2 Beer Sales</span>
+                                <input type="number" class="form-control" step=".01" name='s2_beer' placeholder=" e.g. 489.21" required=required/><br>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">W2 Other Beverage Sales</span>
+                                <input type="number" class="form-control" step=".01" name='s2_nabev' placeholder=" e.g. 489.21" required=required/><br>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">W2 Comps</span>
+                                <input type="number" class="form-control" step="1" name='s2_comps' placeholder=" e.g. 1" required=required/><br>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">W2 Net Sales</span>
+                                <input type="number" class="form-control" step=".01" name='s2_netsales' placeholder=" e.g. 1978.23" required=required/><br>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">W2 Deposit</span>
+                                <input type="number" class="form-control" step=".01" name='s2_deposit' placeholder=" e.g. 213.22 or -213.22" required=required/><br>
+                            </div>
+                        </div>
+                        <div class="col-xs-2"></div>
+                    </div>
+                    
+                </div>
+            </div>
+            </div>
+            <!-- end of row -->
+        </div>
+        <!-- end of row -->
+        
+        <hr>
+        <div class="row text-center">
+            <div class="col-xs-3"></div>
+            <div class='col-xs-6'>
+                
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">What's your name?</span>
+                    <input class="form-control" type="text" step="any" name='name' placeholder="Enter your name" required=required/><br>
+                </div>
+                <br>
+                <button type="submit" ng-click="" class="btn btn-success btn-lg btn-block">Submit</button>
+                
+            </div>
+            <div class="col-xs-3"></div>
+        </div>
+        <!-- end of row -->
+        <br>
+        
+        <div class="row text-center">
+            
+            <div class="col-xs-12">
+                <small>If you have any questions, contact Chris at: <b>347 813 1936</b> or <b>criewaldt@gmail.com</b></small>
+            </div>
+        </div>
+        
+        <input type="text" style="visibility: hidden" name="choices" value="{[{ choices }]}"/>
+        <!--style="visibility: hidden"-->
+        
+        </form>
+        
+    </div>
+    <!-- end of container -->
+    
 <script>
 /* ------------------------------------------------------- 
 
-* Filename:     Adding Form Fields Dynamically
-* Website:      http://www.shanidkv.com
-* Description:  Shanidkv AngularJS blog
-* Author:       Muhammed Shanid shanidkannur@gmail.com
+* Angular Script
 
 ---------------------------------------------------------*/
+
+
+
+
 var app = angular.module('angularjs-starter', []);
 
   app.config(function($interpolateProvider, $httpProvider){         
@@ -244,62 +321,7 @@ var app = angular.module('angularjs-starter', []);
     {ServiceID: 'swing', ServiceName: 'Swing'},
   ];
   
-  $scope.submit = function() {
-    var cash = document.getElementById('cash').value;
-    
-    var s1_food = document.getElementById('s1_food').value;
-    var s1_liquor = document.getElementById('s1_liquor').value;
-    var s1_wine = document.getElementById('s1_wine').value;
-    var s1_beer = document.getElementById('s1_beer').value;
-    var s1_comps = document.getElementById('s1_comps').value;
-    var s1_netsales = document.getElementById('s1_netsales').value;
-    var s1_deposit = document.getElementById('s1_deposit').value;
-
-    var s2_food = document.getElementById('s2_food').value;
-    var s2_liquor = document.getElementById('s2_liquor').value;
-    var s2_wine = document.getElementById('s2_wine').value;
-    var s2_beer = document.getElementById('s2_beer').value;
-    var s2_comps = document.getElementById('s2_comps').value;
-    var s2_netsales = document.getElementById('s2_netsales').value;
-    var s2_deposit = document.getElementById('s2_deposit').value;
-    
-    var POSTdata = {
-      'staff': $scope.choices,
-      's1':{
-        'food':s1_food,
-        'liquor':s1_liquor,
-        'wine':s1_wine,
-        'beer':s1_beer,
-        'comps':s1_comps,
-        'netsales':s1_netsales,
-        'deposit':s1_deposit},
-      's2':{
-        'food':s2_food,
-        'liquor':s2_liquor,
-        'wine':s2_wine,
-        'beer':s2_beer,
-        'comps':s2_comps,
-        'netsales':s2_netsales,
-        'deposit':s2_deposit},
-      'cash':cash,
-        };
-    //testing
-    
-    
-        $.ajax('/submit', {
-            method: 'POST',
-            contentType: 'application/json',
-            processData: false,
-            data: JSON.stringify(POSTdata)
-        })
-        .then(
-            function success() {
-                // userInfo will be a JavaScript object containing properties such as
-                // name, age, address, etc
-            }
-        );
-        
-    };
+ 
      
   
   
@@ -307,4 +329,10 @@ var app = angular.module('angularjs-starter', []);
 });
   
   
+  
+ 
+  
 </script>
+
+
+</body>

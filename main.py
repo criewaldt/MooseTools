@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request, flash
 import json
 import datetime
-from moose import Checkout
+from checkout import Checkout, CheckoutTest
 
 # Initialize the Flask application
 app = Flask(__name__)
-app.secret_key = 'some_secret'
+app.secret_key = 'sdfsklkj987923nk4jh23'
 
 #helper functions
 def q_round(x):
@@ -14,7 +14,7 @@ def q_round(x):
 # Define a route for the default URL, which loads the form
 @app.route('/')
 def form():
-    return render_template('index2.html')
+    return render_template('index.html')
 
 # Define a route for the action of the form, for example '/hello/'
 # We are also defining which type of requests this route is 
@@ -23,13 +23,11 @@ def form():
 def generate_report():
 
     cash = request.form['cash']
-    cash = float(cash)
-
     s1_food = float(request.form['s1_food'])
     s1_liquor = float(request.form['s1_liquor'])
     s1_beer = float(request.form['s1_beer'])
     s1_wine = float(request.form['s1_wine'])
-    #s1_nabev = request.form['s1_nabev']
+    s1_nabev = request.form['s1_nabev']
     s1_comps = float(request.form['s1_comps'])
     s1_netsales = float(request.form['s1_netsales'])
     s1_deposit = float(request.form['s1_deposit'])
@@ -38,7 +36,7 @@ def generate_report():
     s2_liquor = float(request.form['s2_liquor'])
     s2_beer = float(request.form['s2_beer'])
     s2_wine = float(request.form['s2_wine'])
-    #s2_nabev = request.form['s2_nabev'])
+    s2_nabev = request.form['s2_nabev']
     s2_comps = float(request.form['s2_comps'])
     s2_netsales = float(request.form['s2_netsales'])
     s2_deposit = float(request.form['s2_deposit'])
