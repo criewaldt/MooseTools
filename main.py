@@ -68,7 +68,8 @@ def generate_report():
         #print(json.dumps(report, indent=4, sort_keys=True))
         return render_template('report.html', data=report)
     except Exception as error:
-        flash('Something went wrong! Please check your information and try again.')
+        
+        flash('Something went wrong! {}'.format(error))
         return render_template('index.html')
 
         
