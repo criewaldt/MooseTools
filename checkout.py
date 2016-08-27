@@ -98,12 +98,12 @@ def Checkout(data):
     del report['cash']
 
     #SAVE ALL INFO TO DATABASE
-    conn = sqlite3.connect('db/db.db')
+    conn = sqlite3.connect('db/db.sqlite')
     c = conn.cursor()
 
     report['date'] = now.strftime("%Y-%m-%d %H:%M")
     
-    c.execute("INSERT INTO report VALUES ('{}','{}','{}', '{}')".format(data['name'], now.strftime("%Y-%m-%d %H:%M"), json.dumps(data), json.dumps(report)))
+    c.execute("INSERT INTO report VALUES ('{}','{}','{}','{}')".format(data['name'], now.strftime("%Y-%m-%d %H:%M"), json.dumps(data), json.dumps(report)))
     conn.commit()
     conn.close()
     return report
