@@ -98,7 +98,7 @@ def Checkout(data):
     del report['cash']
 
     #SAVE ALL INFO TO DATABASE
-    conn = sqlite3.connect('db/db.sqlite')
+    conn = sqlite3.connect('/home/pi/ShiftCheckout/db/db.sqlite')
     c = conn.cursor()
 
     report['date'] = now.strftime("%Y-%m-%d %H:%M")
