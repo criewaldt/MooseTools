@@ -80,7 +80,7 @@ def page_not_found(e):
 @app.errorhandler(500)
 def oops(e):
     flash('You did not fill out the form correctly, there are empty fields or invalid entries.')
-    return render_template('oops.html')
+    return render_template('index.html')
 
 # Run the app :)
 if __name__ == '__main__':
