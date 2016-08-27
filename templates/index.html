@@ -66,6 +66,14 @@ select{
             <div class="alert alert-warning">
                 <strong>Warning:</strong> Take out any employee banks<strong> before</strong> using this form.
             </div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}  
+              {% for message in messages %}
+                <div class="alert alert-danger" role="alert"><strong>{{ message }}</strong></div>
+              {% endfor %}
+              
+            {% endif %}
+          {% endwith %}
             
           </div>
 
@@ -93,6 +101,11 @@ select{
                 <hr>
                 </div>
                 <button form='fornothing' class="btn btn-primary" ng-click="addNewChoice()">Add Staff Member</button>
+                <br>
+                <input type="text" style="visibility: hidden" name="choices" value="{[{ choices }]}"/>
+                <!--style="visibility: hidden"-->
+            
+            
             </div>
             
             
@@ -267,8 +280,7 @@ select{
             </div>
         </div>
         
-        <input type="text" style="visibility: hidden" name="choices" value="{[{ choices }]}"/>
-        <!--style="visibility: hidden"-->
+        
         
         </form>
         
