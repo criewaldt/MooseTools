@@ -79,7 +79,7 @@ def generate_report():
         elif choice['type'] == 'host':
             hosts[choice['name']] = {'hours':q_round(choice['hours'])}
         else:
-            swings[choice['name']] = {'hours':q_round(choice['hours'])
+            swings[choice['name']] = {'hours':q_round(choice['hours'])}
     staff = {'serve':servers,
              'host':hosts,
              'swing':swings}
