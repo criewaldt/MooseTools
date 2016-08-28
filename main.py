@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, Response
+from functools import wraps
 import json
 import datetime
 from checkout import Checkout
@@ -7,6 +8,29 @@ import traceback
 # Initialize the Flask application
 app = Flask(__name__)
 app.secret_key = 'sdfsklkj987923nk4jh23'
+
+
+def check_auth(username, password):
+    """This function is called to check if a username /
+    password combination is valid.
+    """
+    return username == 'admin' and password == 'secret'
+
+def authenticate():
+    """Sends a 401 response that enables basic auth"""
+    return Response(
+    '''Ah ah ah, you didn't say the magic word...''', 401,
+    {'WWW-Authenticate': 'Basic realm="Login Required"'})
+
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth = request.authorization
+        if not auth or not check_auth(auth.username, auth.password):
+            return authenticate()
+        return f(*args, **kwargs)
+    return decorated
+
 
 # Define a route for the default URL, which loads the form
 @app.route('/')
@@ -21,8 +45,6 @@ def generate_report():
 
     data = {}
 
-    
-    
     data['cash'] = request.form['cash']
     data['s1_food'] = request.form['s1_food']
     data['s1_liquor']  = request.form['s1_liquor']
@@ -72,6 +94,10 @@ def generate_report():
         flash('Something went wrong! {}'.format(error))
         return render_template('index.html')
 
+@app.route('/archive')
+@requires_auth
+def archive():
+    return 'Test'
         
 @app.errorhandler(404)
 def page_not_found(e):
