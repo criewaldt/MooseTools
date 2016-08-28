@@ -87,7 +87,7 @@ select{
             <br>
             <div class="col-xs-12">
                 <div data-ng-repeat="choice in choices">
-                
+                <hr>
                 <label for="type">Job Type: </label>
                 <select id="type" name="jobType" ng-model="choice.type" required>
                     <option value=""></option>
@@ -98,11 +98,16 @@ select{
                 <label for="hours">Hours: </label>
                 <input type="number" id='hours' step="any" ng-model="choice.hours" placeholder=" e.g. 4 or 4.5" required=required/>&nbsp;&nbsp;&nbsp;
                 <button form='fornothing' class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
-                <hr>
+                
+                </div>
+                <input type="text" style="visibility: hidden" name="choices" value="{[{ choices }]}"/>
+                <div class="text-center">
+                    <small>**Employee hours will be rounded to the nearst 1/4 hour</small><br><br>
                 </div>
                 <button form='fornothing' class="btn btn-primary" ng-click="addNewChoice()">Add Staff Member</button>
                 <br>
-                <input type="text" style="visibility: hidden" name="choices" value="{[{ choices }]}"/>
+                <hr>
+                
                 <!--style="visibility: hidden"-->
             
             
@@ -113,7 +118,7 @@ select{
             
         </div>
         <!-- end of row -->
-        <br>
+        
         
         <div class="row text-center">
             <div class="col-xs-3"></div>

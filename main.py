@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, flash, Response
 from functools import wraps
 import json
 import datetime
-from checkout import Checkout
+from checkout import Checkout, q_round
 import traceback
 
 # Initialize the Flask application
@@ -75,11 +75,11 @@ def generate_report():
     swings = {}
     for choice in staffObj:
         if choice['type'] == 'server':
-            servers[choice['name']] = {'hours':choice['hours']}
+            servers[choice['name']] = {'hours':q_round(choice['hours'])}
         elif choice['type'] == 'host':
-            hosts[choice['name']] = {'hours':choice['hours']}
+            hosts[choice['name']] = {'hours':q_round(choice['hours'])}
         else:
-            swings[choice['name']] = {'hours':choice['hours']}
+            swings[choice['name']] = {'hours':q_round(choice['hours'])
     staff = {'serve':servers,
              'host':hosts,
              'swing':swings}
