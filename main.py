@@ -7,7 +7,7 @@ import traceback
 
 # Initialize the Flask application
 app = Flask(__name__)
-app.secret_key = 'sdfsklkj987923nk4jh23'
+app.secret_key = 'itsasecret'
 
 
 def check_auth(username, password):
@@ -31,68 +31,70 @@ def requires_auth(f):
         return f(*args, **kwargs)
     return decorated
 
-
 # Define a route for the default URL, which loads the form
 @app.route('/')
-def form():
+def index():
     return render_template('index.html')
 
-# Define a route for the action of the form, for example '/hello/'
-# We are also defining which type of requests this route is 
-# accepting: POST requests in this case
-@app.route('/submit', methods=['POST'])
-def generate_report():
 
-    data = {}
+@app.route('/server', methods=['POST', 'GET'])
+def server():
+    if request.method == "GET":
+        return render_template('serve3.html')
+    else:
+            
 
-    data['cash'] = request.form['cash']
-    data['s1_food'] = request.form['s1_food']
-    data['s1_liquor']  = request.form['s1_liquor']
-    data['s1_beer'] = request.form['s1_beer']
-    data['s1_wine'] = request.form['s1_wine']
-    data['s1_nabev'] = request.form['s1_nabev']
-    data['s1_comps'] = request.form['s1_comps']
-    data['s1_sales'] = request.form['s1_netsales']
-    data['s1_deposit'] = request.form['s1_deposit']
+        data = {}
 
-    data['s2_food'] = request.form['s2_food']
-    data['s2_liquor'] = request.form['s2_liquor']
-    data['s2_beer'] = request.form['s2_beer']
-    data['s2_wine'] = request.form['s2_wine']
-    data['s2_nabev'] = request.form['s2_nabev']
-    data['s2_comps'] = request.form['s2_comps']
-    data['s2_sales'] = request.form['s2_netsales']
-    data['s2_deposit'] = request.form['s2_deposit']
+        data['cash'] = request.form['cash']
+        data['s1_food'] = request.form['s1_food']
+        data['s1_liquor']  = request.form['s1_liquor']
+        data['s1_beer'] = request.form['s1_beer']
+        data['s1_wine'] = request.form['s1_wine']
+        #data['s1_nabev'] = request.form['s1_nabev']
+        #data['s1_comps'] = request.form['s1_comps']
+        data['s1_sales'] = request.form['s1_netsales']
+        data['s1_deposit'] = request.form['s1_deposit']
 
-    for key in data:
-        data[key] = float(data[key])
+        data['s2_food'] = request.form['s2_food']
+        data['s2_liquor'] = request.form['s2_liquor']
+        data['s2_beer'] = request.form['s2_beer']
+        data['s2_wine'] = request.form['s2_wine']
+        #data['s2_nabev'] = request.form['s2_nabev']
+        #data['s2_comps'] = request.form['s2_comps']
+        data['s2_sales'] = request.form['s2_netsales']
+        data['s2_deposit'] = request.form['s2_deposit']
 
-    data['name'] = request.form['name']
-    
-    staffObj = json.loads(request.form['choices'])
-    servers = {}
-    hosts = {}
-    swings = {}
-    for choice in staffObj:
-        if choice['type'] == 'server':
-            servers[choice['name']] = {'hours':q_round(choice['hours'])}
-        elif choice['type'] == 'host':
-            hosts[choice['name']] = {'hours':q_round(choice['hours'])}
-        else:
-            swings[choice['name']] = {'hours':q_round(choice['hours'])}
-    staff = {'serve':servers,
-             'host':hosts,
-             'swing':swings}
-    data['staff'] = staff
+        for key in data:
+            data[key] = float(data[key])
 
-    try:
-        report = Checkout(data)
-        #print(json.dumps(report, indent=4, sort_keys=True))
-        return render_template('report.html', data=report)
-    except Exception as error:
+        data['name'] = request.form['name']
         
-        flash('Something went wrong! {}'.format(error))
-        return render_template('index.html')
+        staffObj = json.loads(request.form['choices'])
+        servers = {}
+        hosts = {}
+        swings = {}
+        for choice in staffObj:
+            if choice['type'] == 'server':
+                servers[choice['name']] = {'hours':q_round(choice['hours'])}
+            elif choice['type'] == 'host':
+                hosts[choice['name']] = {'hours':q_round(choice['hours'])}
+            else:
+                swings[choice['name']] = {'hours':q_round(choice['hours'])}
+        staff = {'serve':servers,
+                 'host':hosts,
+                 'swing':swings}
+        data['staff'] = staff
+
+        try:
+            report = Checkout(data)
+            #print(json.dumps(report, indent=4, sort_keys=True))
+            return render_template('report2.html', data=report)
+        except Exception as error:
+            
+            flash('Something went wrong! {}'.format(error))
+            print(error)
+            return render_template('index.html')
 
 @app.route('/archive')
 @requires_auth

@@ -25,7 +25,7 @@ def Checkout(data):
     report['deposit'] = {'net': round(data['s1_deposit'] + data['s2_deposit']),
                          'w1': data['s1_deposit'],
                          'w2': data['s2_deposit'],}
-    report['comps'] = int(data['s1_comps'] + data['s2_comps'])
+    #report['comps'] = int(data['s1_comps'] + data['s2_comps'])
 
     report['barTip'] = round(report['alcohol'] * 0.1)
 
@@ -97,6 +97,7 @@ def Checkout(data):
     report['staff']['serve'][cname]['pay'] += int(report['cash'])
     del report['cash']
 
+    """
     #SAVE ALL INFO TO DATABASE
     conn = sqlite3.connect('/home/pi/ShiftCheckout/db/db.sqlite')
     c = conn.cursor()
@@ -106,4 +107,5 @@ def Checkout(data):
     c.execute("INSERT INTO report VALUES ('{}','{}','{}','{}')".format(data['name'], now.strftime("%Y-%m-%d %H:%M"), json.dumps(data), json.dumps(report)))
     conn.commit()
     conn.close()
+    """
     return report
