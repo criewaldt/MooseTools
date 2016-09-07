@@ -91,7 +91,7 @@ def server():
         try:
             report = Checkout(data)
             #print(json.dumps(report, indent=4, sort_keys=True))
-            return render_template('report2.html', data=report)
+            return render_template('report.html', data=report)
         except Exception as error:
             
             flash('Something went wrong! Check your numbers and try again.')

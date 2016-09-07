@@ -97,15 +97,17 @@ def Checkout(data):
     report['staff']['serve'][cname]['pay'] += int(report['cash'])
     del report['cash']
 
-    
-    #SAVE ALL INFO TO DATABASE
-    conn = sqlite3.connect('/home/pi/ShiftCheckout/db/db.sqlite')
-    c = conn.cursor()
+    try:
+        #SAVE ALL INFO TO DATABASE
+        conn = sqlite3.connect('/home/pi/ShiftCheckout/db/db.sqlite')
+        c = conn.cursor()
 
-    report['date'] = now.strftime("%Y-%m-%d %H:%M")
-    
-    c.execute("INSERT INTO report VALUES ('{}','{}','{}','{}')".format(data['name'], now.strftime("%Y-%m-%d %H:%M"), json.dumps(data), json.dumps(report)))
-    conn.commit()
-    conn.close()
+        report['date'] = now.strftime("%Y-%m-%d %H:%M")
+        
+        c.execute("INSERT INTO report VALUES ('{}','{}','{}','{}')".format(data['name'], now.strftime("%Y-%m-%d %H:%M"), json.dumps(data), json.dumps(report)))
+        conn.commit()
+        conn.close()
+    except:
+        print("ERROR: DB FAILED")
     
     return report
