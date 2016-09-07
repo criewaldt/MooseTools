@@ -92,9 +92,9 @@ def server():
             return render_template('report2.html', data=report)
         except Exception as error:
             
-            flash('Something went wrong! {}'.format(error))
+            flash('Something went wrong! Check your numbers and try again.')
             print(error)
-            return render_template('index.html')
+            return render_template('serve3.html')
 
 @app.route('/archive')
 @requires_auth
@@ -105,10 +105,12 @@ def archive():
 def page_not_found(e):
     return "template not found"
 
+"""
 @app.errorhandler(500)
 def oops(e):
     flash('You did not fill out the form correctly, there are empty fields or invalid entries.')
     return render_template('index.html')
+"""
 
 # Run the app :)
 if __name__ == '__main__':

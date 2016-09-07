@@ -203,13 +203,14 @@
 					
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
 		          	
-					<a class="navbar-brand" href="/">Tattooed Moose</a> 
-		        </div>
+					<a class="navbar-brand" href="/">Moose Tools</a> 
+	        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav navbar-right">
-		            <li class="active"><a href="#" data-nav-section="home"><span>Home</span></a></li>
-		            <li><a href="#" data-nav-section="services"><span>Tools</span></a></li>
-		            <li><a href="#" data-nav-section="about"><span>About</span></a></li>		            
+		            <li class="active"><a href="#" data-nav-section="home"><span>Server Checkout</span></a></li>
+		            <li><a href="#" data-nav-section="services"><span>Get Started</span></a></li>
+					<li><a href="#" data-nav-section="feedback"><span>Got Feedback?</span></a></li>
+					</span></a></li>		            
 		          </ul>
 		        </div>
 				<br>
@@ -226,6 +227,17 @@
 					<h2 class="to-animate">Server Checkout</h2>
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2 to-animate">
+							{% with messages = get_flashed_messages() %}
+								{% if messages %}
+								  
+								  {% for message in messages %}
+									<div class="alert alert-danger" role="alert">
+										<strong>Oh snap!</strong> {{message}}
+									  </div>
+								  {% endfor %}
+								  
+								{% endif %}
+							{% endwith %}
 							<br>
 							
 							<img src="static/images/terminal.jpg">
@@ -249,10 +261,16 @@
 						<div class="col-md-12 text-center to-animate">
 							<div class="person">
 								<div class="position">Important Reminders</div>
-								<p>This tool is to be used after checkout reports have been run on both terminals, but <strong>before</strong> any cash has been removed
-								from the bag.</p>
-								<p>Always <strong>double-check </strong>(or even triple-check) your cash counts.</p>
-								<p>If applicable, this tool will <strong>not</strong> tell you how to divide the 1% support bonus.</p>
+								<p class="text-left">Remove any staff banks from the cash bag <strong>before</strong> using this tool.</p>
+								<p class="text-left">Always <strong>double-check </strong>(or even triple-check) your cash counts.</p>
+								<p class="text-left">If there is a 1% support bonus due, this tool will <strong>not</strong> tell you how to divide it among the support staff. That is still the responsibility of the closing server.</p>
+								<br><br>
+								<div class="position">Instructions</div>
+								<p class="text-left">Run checkouts on both terminals to get the <strong>checkout reciept</strong> for each.</p>
+								<p class="text-left">Remove any banks brought by staff from the cash bag, but do <strong>not</strong> remove any other cash from the bag before using this tool, including the deposit.</p>
+								<p class="text-left">Complete the server checkout form using the numbers from the top of each terminal checkout reciept, and the cash bag count. Include 0's in the form fields if the value for an item is '0'.</p>
+								<p class="text-left">Once you've created your checkout report using this tool, you will have all the numbers you need to make each envelope needed for the shift deposit & employee tipouts.</p>
+								<p class="text-left">Buy Chris a beer for making your closing duties like, WAYYYYYY easier.</p>
 							</div>
 						</div>
 						
@@ -280,7 +298,7 @@
 					<div class="box to-animate">
 						<div class="icon colored-1"><span><i class="icon-money"></i></span></div>
 						<h3>Cash Bag</h3>
-						<p>How much cash is in the cash bag?</p>
+						<p>How much cash is in the cash bag?<br>Remember, this total <strong>excludes</strong> any staff banks.</p>
 						<input type="number" step="1" pattern="[0-9]*" name='cash' step="any" class="form-control" placeholder=" e.g. 478" required=required aria-p="Amount (to the nearest dollar)"/>
 					</div>
 					<div class="box to-animate">
@@ -393,18 +411,7 @@
 						<hr>
 					</div>
 				</div>
-				<div class="col-md-12">
-					<div class="box to-animate">
-						<div class="icon colored-3"><span><i class="icon-eye"></i></span></div>
-						<h3>Fi</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-					</div>
-					<div class="box to-animate">
-						<div class="icon colored-6"><span><i class="icon-users"></i></span></div>
-						<h3>For creative like you!</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</div>
@@ -428,9 +435,24 @@
 					</div>
 				</div>
 			</div>
+	
+	<div id="fh5co-our-services" data-section="feedback">
+		<div class="container">
+			<div class="row row-bottom-padded-sm">
+				<div class="col-md-12 section-heading text-center">
+					<h2 class="to-animate">Got Feedback?</h2>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 to-animate">
+							<h3>Tell Chris in person, he didn't feel like coding this contact form.</h3><h3>Also, bring him pizza.</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 			
 		
-	</div>
+		
 
 </form>
 </div>
@@ -466,6 +488,8 @@
 
 	<!-- Main JS (Do not remove) -->
 	<script src="static/js/main.js"></script>
+	
+
 
 	<script>
 	/* ------------------------------------------------------- 
