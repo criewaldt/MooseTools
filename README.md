@@ -1,5 +1,9 @@
-ShiftCheckout : Checkout Calculator
+Moose Tools: A fully functional webapp designed by Chris Riewaldt to help employees at the Tattooed Moose.
 
-Used to calculate terminal checkout and employee tip information after a shift.
+Ingredients: Webapp built with Python including Flask, JavaScript including AngularJS, and HTML5. Served by a Raspberry Pi, accessible locally via WiFi.
 
-This will be hosted by an on-site raspberry pi. Users will connect to a dedicated network and navigate to the Flask host address. Checkout reports will be saved locally for retrevial via SSH if needed (or maybe served directly through a Flask endpoint?..).
+How it works: Connect to MooseTools WiFi, access webapp by navigating browser to LOCALHOST.
+
+Tools currently included: Server Checkout Calculator.
+
+Tools coming soon: Bar Checkout Calculator.
