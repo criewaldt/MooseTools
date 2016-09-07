@@ -1,163 +1,312 @@
-<head>
-<script   src="static/js/jquery-3.1.0.min.js"></script>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="static/css/bootstrap.min.css" >
 
-<!-- Theme CSS -->
-<link href="static/css/freelancer.min.css" rel="stylesheet">
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Tattooed Moose: Tools by Chris Riewaldt</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Tattooed Moose: Tools by Chris Riewaldt" />
+	<meta name="keywords" content="Tattooed Moose, tools, Chris Riewaldt" />
+	<meta name="author" content="Chris Riewaldt" />
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="static/js/bootstrap.min.js"></script>
-<script src="static/js/angular.min.js"></script>
+  <!-- 
+	//////////////////////////////////////////////////////
 
- <!-- Custom Fonts -->
-<link href="static/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	FREE HTML5 TEMPLATE 
+	DESIGNED & DEVELOPED by FREEHTML5.CO
+		
+	Website: 		http://freehtml5.co/
+	Email: 			info@freehtml5.co
+	Twitter: 		http://twitter.com/fh5co
+	Facebook: 		https://www.facebook.com/fh5co
 
-<style>
-    fieldset{
-    background: #FCFCFC;
-    padding: 16px;
-    border: 1px solid #D5D5D5;
-}
-.addfields{
-    margin: 10px 0;
-}
+	//////////////////////////////////////////////////////
+	 -->
 
-#choicesDisplay {
-    padding: 10px;
-    background: rgb(227, 250, 227);
-    border: 1px solid rgb(171, 239, 171);
-    color: rgb(9, 56, 9);
-}
-.remove{
-    background: #C76868;
-    color: #FFF;
-    font-weight: bold;
-    font-size: 21px;
-    border: 0;
-    cursor: pointer;
-    display: inline-block;
-    padding: 4px 9px;
-    vertical-align: top;
-    line-height: 100%;   
-}
-input[type="text"],
-select{
-    padding:5px;
-}
-</style>
+  <!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
 
-</head>
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="static/css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="static/css/icomoon.css">
+	<!-- Simple Line Icons -->
+	<link rel="stylesheet" href="static/css/simple-line-icons.css">
+	<!-- Owl Carousel -->
+	<link rel="stylesheet" href="static/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="static/css/owl.theme.default.min.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="static/css/bootstrap.css">
+
+	<!-- 
+	Default Theme Style 
+	You can change the style.css (default color purple) to one of these styles
+	
+	1. pink.css
+	2. blue.css
+	3. turquoise.css
+	4. orange.css
+	5. lightblue.css
+	6. brown.css
+	7. green.css
+
+	-->
+	<link rel="stylesheet" href="static/css/style.css">
+
+	<!-- Styleswitcher ( This style is for demo purposes only, you may delete this anytime. ) -->
+	<link rel="stylesheet" id="theme-switch" href="static/css/style.css">
+	<!-- End demo purposes only -->
 
 
-<body>
-    <div class="container" ng-app="angularjs-starter" ng-controller="MainCtrl">
-    
-    
-        <form name="input" action="/submit" method="POST">
-            
-        <div class="row text-center">
-          <div class="col-xs-12">
-            <h1>Tatooed Moose</h1>
-            <img src="static/imgs/moose.png">
-            
-            <h1>Checkout Report</h1>
-            <br>
-            <div class="alert alert-warning">
-                <strong>Warning:</strong> Take out any employee banks<strong> before</strong> using this form.
-            </div>
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}  
-              {% for message in messages %}
-                <div class="alert alert-danger" role="alert"><strong>{{ message }}</strong></div>
-              {% endfor %}
-              
-            {% endif %}
-          {% endwith %}
-            
-          </div>
+	<style>
+	/* For demo purpose only */
+	
+	/* For Demo Purposes Only ( You can delete this anytime :-) */
+	#colour-variations {
+		padding: 10px;
+		-webkit-transition: 0.5s;
+	  	-o-transition: 0.5s;
+	  	transition: 0.5s;
+		width: 140px;
+		position: fixed;
+		left: 0;
+		top: 100px;
+		z-index: 999999;
+		background: #fff;
+		/*border-radius: 4px;*/
+		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
+		-webkit-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
+		-moz-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
+		-ms-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
+		box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
+	}
+	#colour-variations.sleep {
+		margin-left: -140px;
+	}
+	#colour-variations h3 {
+		text-align: center;;
+		font-size: 11px;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		color: #777;
+		margin: 0 0 10px 0;
+		padding: 0;;
+	}
+	#colour-variations ul,
+	#colour-variations ul li {
+		padding: 0;
+		margin: 0;
+	}
+	#colour-variations li {
+		list-style: none;
+		display: inline;
+	}
+	#colour-variations li a {
+		width: 20px;
+		height: 20px;
+		position: relative;
+		float: left;
+		margin: 5px;
+	}
+	#colour-variations li a[data-theme="style"] {
+		background: #6173f4;
+	}
+	#colour-variations li a[data-theme="pink"] {
+		background: #f64662;
+	}
+	#colour-variations li a[data-theme="blue"] {
+		background: #2185d5;
+	}
+	#colour-variations li a[data-theme="turquoise"] {
+		background: #00b8a9;
+	}
+	#colour-variations li a[data-theme="orange"] {
+		background: #ff6600;
+	}
+	#colour-variations li a[data-theme="lightblue"] {
+		background: #5585b5;
+	}
+	#colour-variations li a[data-theme="brown"] {
+		background: #a03232;
+	}
+	#colour-variations li a[data-theme="green"] {
+		background: #65d269;
+	}
 
-        </div>
-        <!-- end of row -->
-        
-        <div class="row text-center">
-            
-            <H1>Staff Info</H1>
-            <p><i>Enter all tipped staff that worked the shift</i></p>
-            <br>
-            <div class="col-xs-12">
-                <div data-ng-repeat="choice in choices">
-                <hr>
-                <label for="type">Job Type: </label>
-                <select id="type" name="jobType" ng-model="choice.type" required>
-                    <option value=""></option>
-                    <option ng-repeat="option in jobTypes" value="{[{option.id}]}">{[{option.name}]}</option>
-                </select>&nbsp;
-                <label for="name">Name: </label>
-                <input type="text" id='name' ng-model="choice.name" placeholder=" e.g. Chris" required=required/>&nbsp;&nbsp;&nbsp;
-                <label for="hours">Hours: </label>
-                <input type="number" id='hours' step="any" ng-model="choice.hours" placeholder=" e.g. 4 or 4.5" required=required/>&nbsp;&nbsp;&nbsp;
-                <button form='fornothing' class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
-                
-                </div>
-                <input type="text" style="visibility: hidden" name="choices" value="{[{ choices }]}"/>
-                <div class="text-center">
-                    <small>**Employee hours will be rounded to the nearst 1/4 hour</small><br><br>
-                </div>
-                <button form='fornothing' class="btn btn-primary" ng-click="addNewChoice()">Add Staff Member</button>
-                <br>
-                <hr>
-                
-                <!--style="visibility: hidden"-->
-            
-            
-            </div>
-            
-            
-            
-            
-        </div>
-        <!-- end of row -->
-        
-        
-        <div class="row text-center">
-            <div class="col-xs-3"></div>
-            <div class="col-xs-6">
-                <h1>Cash in the Bag</h1>
-                <p><i>This is the total amount of cash in the bag at the end of the shift</i></p>
-                <br>
-                
-                <div class="row">
-                    <div class="col-xs-2"></div>
-                    <div class="col-xs-8 text-center">
-                        <div class="input-group">
-                            <span class="input-group-addon">$</span>
-                            <input type="number" step="1" pattern="[0-9]*" name='cash' step="any" class="form-control" placeholder=" e.g. 478" required=required aria-p="Amount (to the nearest dollar)"/>
-                        </div>
-                    </div>
-                    <div class="col-xs-2"></div>
-                </div>
-                <br>
-                
-                
-            </div>
-            <div class="col-xs-3"></div>
-        </div>
-        <hr>
-        <!-- end of row -->
-        
-        <div class='row text-center'>
-            <h1>Checkout Info</h1>
-        
-            <div class='row text-center'>
-                <div class='col-xs-12 text-center'>
-                    <h3>Wait 1</h3>
-                    <div class="row">
-                        <div class="col-xs-2"></div>
-                        <div class="col-xs-8">
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">W1 Food Sales</span>
-                                <input class="form-control" type="number" step=".01" name='s1_food' placeholder=" e.g. 1190.15" required=required/><br>
+	.option-toggle {
+		position: absolute;
+		right: 0;
+		top: 0;
+		margin-top: 5px;
+		margin-right: -30px;
+		width: 30px;
+		height: 30px;
+		background: #f64662;
+		text-align: center;
+		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
+		color: #fff;
+		cursor: pointer;
+		-webkit-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
+		-moz-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
+		-ms-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
+		box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
+	}
+	.option-toggle i {
+		top: 2px;
+		position: relative;
+	}
+	.option-toggle:hover, .option-toggle:focus, .option-toggle:active {
+		color:  #fff;
+		text-decoration: none;
+		outline: none;
+	}
+	</style>
+	<!-- End demo purposes only -->
+
+
+	<!-- Modernizr JS -->
+	<script src="static/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="static/js/respond.min.js"></script>
+	<![endif]-->
+	<script src="static/js/angular.min.js"></script>
+
+	</head>
+	<body ng-app="angularjs-starter" ng-controller="MainCtrl">
+<div>
+	<form name="input" action="/server" method="POST">
+	<header role="banner" id="fh5co-header">
+			<div class="container">
+				<!-- <div class="row"> -->
+			    <nav class="navbar navbar-default">
+		        <div class="navbar-header">
+		        	<!-- Mobile Toggle Menu Button -->
+					
+					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+		          	
+					<a class="navbar-brand" href="/">Moose Tools</a> 
+	        </div>
+		        <div id="navbar" class="navbar-collapse collapse">
+		          <ul class="nav navbar-nav navbar-right">
+		            <li class="active"><a href="#" data-nav-section="home"><span>Server Checkout</span></a></li>
+		            <li><a href="#" data-nav-section="services"><span>Get Started</span></a></li>
+					<li><a href="#" data-nav-section="feedback"><span>Got Feedback?</span></a></li>
+					</span></a></li>		            
+		          </ul>
+		        </div>
+				<br>
+			    </nav>
+			  <!-- </div> -->
+		  </div>
+	</header>
+
+	
+	<div id="fh5co-about-us" data-section="about">
+		<div class="container">
+			<div class="row row-bottom-padded-lg" id="about-us">
+				<div class="col-md-12 section-heading text-center">
+					<h2 class="to-animate">Server Checkout</h2>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 to-animate">
+							{% with messages = get_flashed_messages() %}
+								{% if messages %}
+								  
+								  {% for message in messages %}
+									<div class="alert alert-danger" role="alert">
+										<strong>Oh snap!</strong> {{message}}
+									  </div>
+								  {% endfor %}
+								  
+								{% endif %}
+							{% endwith %}
+							<br>
+							
+							<img src="static/images/terminal.jpg">
+							<br>
+							
+							<h3 class="to-animate">Scroll down to calculate staff shift tip/pay & deposit information at the end of a serving shift.</h3>
+							<br>
+							
+							
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="row" id="team">
+				<div class="col-md-12 section-heading text-center to-animate">
+					<h2>Before you begin</h2>
+				</div>
+				<div class="col-md-12">
+					<div class="row row-bottom-padded-lg">
+						<div class="col-md-12 text-center to-animate">
+							<div class="person">
+								<div class="position">Important Reminders</div>
+								<p class="text-left">Remove any staff banks from the cash bag <strong>before</strong> using this tool.</p>
+								<p class="text-left">Always <strong>double-check </strong>(or even triple-check) your cash counts.</p>
+								<p class="text-left">If there is a 1% support bonus due, this tool will <strong>not</strong> tell you how to divide it among the support staff. That is still the responsibility of the closing server.</p>
+								<br><br>
+								<div class="position">Instructions</div>
+								<p class="text-left">Run checkouts on both terminals to get the <strong>checkout reciept</strong> for each.</p>
+								<p class="text-left">Remove any banks brought by staff from the cash bag, but do <strong>not</strong> remove any other cash from the bag before using this tool, including the deposit.</p>
+								<p class="text-left">Complete the server checkout form using the numbers from the top of each terminal checkout reciept, and the cash bag count. Include 0's in the form fields if the value for an item is '0'.</p>
+								<p class="text-left">Once you've created your checkout report using this tool, you will have all the numbers you need to make each envelope needed for the shift deposit & employee tipouts.</p>
+								<p class="text-left">Buy Chris a beer for making your closing duties like, WAYYYYYY easier.</p>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="fh5co-our-services" data-section="services">
+		<div class="container">
+			<div class="row row-bottom-padded-sm">
+				<div class="col-md-12 section-heading text-center">
+					<h2 class="to-animate">Get Started</h2>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 to-animate">
+							<h3>Here we go</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="box to-animate">
+						<div class="icon colored-1"><span><i class="icon-money"></i></span></div>
+						<h3>Cash Bag</h3>
+						<p>How much cash is in the cash bag?<br>Remember, this total <strong>excludes</strong> any staff banks.</p>
+						<input type="number" step="1" pattern="[0-9]*" name='cash' step="any" class="form-control" placeholder=" e.g. 478" required=required aria-p="Amount (to the nearest dollar)"/>
+					</div>
+					<div class="box to-animate">
+						<div class="icon colored-4"><span><i class="icon-screen-desktop"></i></span></div>
+						<h3>Checkout Info: Wait 1</h3>
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1">W1 Food Sales</span>
+								<input class="form-control" type="number" step=".01" name='s1_food' placeholder=" e.g. 1190.15" required=required/><br>
                             </div>
                             <br>
                             <div class="input-group">
@@ -166,50 +315,33 @@ select{
                             </div>
                             <br>
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">W1 Wine Sales</span>
-                                <input type="number" class="form-control" step=".01" name='s1_wine' placeholder=" e.g. 256.87" required=required/><br>
-                            </div>
-                            <br>
-                            <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">W1 Beer Sales</span>
                                 <input type="number" class="form-control" step=".01" name='s1_beer' placeholder=" e.g. 489.21" required=required/><br>
                             </div>
                             <br>
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">W1 Other Beverage Sales</span>
-                                <input type="number" class="form-control" step=".01" name='s1_nabev' placeholder=" e.g. 489.21" required=required/><br>
+                                <span class="input-group-addon" id="basic-addon1">W1 Wine Sales</span>
+                                <input type="number" class="form-control" step=".01" name='s1_wine' placeholder=" e.g. 256.87" required=required/><br>
                             </div>
-                            <br>
+							<br>
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">W1 Comps</span>
-                                <input type="number" class="form-control" step="1" name='s1_comps' placeholder=" e.g. 1" required=required/><br>
-                            </div>
-                            <br>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">W1 Net Sales</span>
+                                <span class="input-group-addon" id="basic-addon1">W1 Total</span>
                                 <input type="number" class="form-control" step=".01" name='s1_netsales' placeholder=" e.g. 1978.23" required=required/><br>
                             </div>
                             <br>
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">W1 Deposit</span>
+                                <span class="input-group-addon" id="basic-addon1">W1 Cash Owed</span>
                                 <input type="number" class="form-control" step=".01" name='s1_deposit' placeholder=" e.g. 213.22 or -213.22" required=required/><br>
                             </div>
-                        </div>
-                        <div class="col-xs-2"></div>
-                    </div>
-                    
-                </div>
-                
-                <div class="col-xs-2"></div>
-                
-                <div class='col-xs-12 text-center'>
-                    <h3>Wait 2</h3>
-                    <div class="row">
-                        <div class="col-xs-2"></div>
-                        <div class="col-xs-8">
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">W2 Food Sales</span>
-                                <input class="form-control" type="number" step=".01" name='s2_food' placeholder=" e.g. 1190.15" required=required/><br>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="box to-animate">
+						<div class="icon colored-2"><span><i class="icon-screen-desktop"></i></span></div>
+						<h3>Checkout Info: Wait 2</h3>
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1">W2 Food Sales</span>
+								<input class="form-control" type="number" step=".01" name='s2_food' placeholder=" e.g. 1190.15" required=required/><br>
                             </div>
                             <br>
                             <div class="input-group">
@@ -217,138 +349,204 @@ select{
                                 <input type="number" class="form-control" step=".01" name='s2_liquor' placeholder=" e.g. 561.41" required=required/><br>
                             </div>
                             <br>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">W2 Wine Sales</span>
-                                <input type="number" class="form-control" step=".01" name='s2_wine' placeholder=" e.g. 256.87" required=required/><br>
-                            </div>
-                            <br>
-                            <div class="input-group">
+							<div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1">W2 Beer Sales</span>
                                 <input type="number" class="form-control" step=".01" name='s2_beer' placeholder=" e.g. 489.21" required=required/><br>
                             </div>
                             <br>
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">W2 Other Beverage Sales</span>
-                                <input type="number" class="form-control" step=".01" name='s2_nabev' placeholder=" e.g. 489.21" required=required/><br>
+                                <span class="input-group-addon" id="basic-addon1">W2 Wine Sales</span>
+                                <input type="number" class="form-control" step=".01" name='s2_wine' placeholder=" e.g. 256.87" required=required/><br>
                             </div>
                             <br>
+                            
+                            
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">W2 Comps</span>
-                                <input type="number" class="form-control" step="1" name='s2_comps' placeholder=" e.g. 1" required=required/><br>
-                            </div>
-                            <br>
-                            <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">W2 Net Sales</span>
+                                <span class="input-group-addon" id="basic-addon1">W2 Total</span>
                                 <input type="number" class="form-control" step=".01" name='s2_netsales' placeholder=" e.g. 1978.23" required=required/><br>
                             </div>
                             <br>
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">W2 Deposit</span>
+                                <span class="input-group-addon" id="basic-addon1">W2 Cash Owed</span>
                                 <input type="number" class="form-control" step=".01" name='s2_deposit' placeholder=" e.g. 213.22 or -213.22" required=required/><br>
                             </div>
-                        </div>
-                        <div class="col-xs-2"></div>
-                    </div>
-                    
-                </div>
-            </div>
-            </div>
-            <!-- end of row -->
-        </div>
-        <!-- end of row -->
-        
-        <hr>
-        <div class="row text-center">
-            <div class="col-xs-4"></div>
-            <div class='col-xs-4'>
-                
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1">What's your name?</span>
-                    <input class="form-control" type="text" step="any" name='name' placeholder="Enter your name" required=required/><br>
-                </div>
-                <br>
-                <button type="submit" ng-click="" class="btn btn-success btn-lg">Submit</button>
-                
-            </div>
-            <div class="col-xs-4"></div>
-        </div>
-        <!-- end of row -->
-        <br>
-        
-        <div class="row text-center">
-            
-            <div class="col-xs-12">
-                <small>Made by Chris. Contact him at: <b>347 813 1936</b> or <b>criewaldt@gmail.com</b></small>
-            </div>
-        </div>
-        
+					</div>
+					<div class="box to-animate">
+						<div class="icon colored-5"><span><i class="icon-users"></i></span></div>
+						<h3>Staff Info</h3>
+						<p>Enter all tipped staff that worked the shift.</p>
+						<div data-ng-repeat="choice in choices">
+						<hr>
+							<div class="col-md-10 well">
+								
+								
+								<label for="type">Job Type:</label>
+								<select id="type" name="jobType" ng-model="choice.type" required>
+									<option value=""></option>
+									<option ng-repeat="option in jobTypes" value="{[{option.id}]}">{[{option.name}]}</option>
+								</select>&nbsp;<br>
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon1">Name</span>
+									<input class="form-control" type="text" id='name' ng-model="choice.name" placeholder=" e.g. Chris" required=required/><br>
+								</div>
+								<br>
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon1">Hours</span>
+									<input class="form-control" type="number" id='hours' step="any" ng-model="choice.hours" placeholder=" e.g. 4 or 4.5" required=required/><br>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<button form='fornothing' class="remove" ng-show="$last" ng-click="removeChoice()">Remove</button>
+							</div>
+						
+						
+						</div>
+						
+						<input type="text" style="visibility: hidden" name="choices" value="{[{ choices }]}"/>
+						<div class="text-center">
+							<small>**Employee hours will be rounded to the nearst 1/4 hour</small><br><br>
+						</div>
+						<button form='fornothing' class="btn btn-primary" ng-click="addNewChoice()">Add Staff Member</button>
+						<br>
+						<hr>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	<div id="fh5co-features" data-section="features">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 section-heading text-center">
+					<h2 class="single-animate animate-features-1">Almost done</h2>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 single-animate animate-features-2">
+							<h3>Are you sure all the information is correct?</h3>
+							<br>
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1">What's your name?</span>
+								<input class="form-control" type="text" step="any" name='name' placeholder="Enter your name" required=required/><br>
+							</div>
+							<br>
+							<button type="submit" ng-click="" class="btn btn-success btn-lg">Submit</button>
+						</div>
+					</div>
+				</div>
+			</div>
+	
+	<div id="fh5co-our-services" data-section="feedback">
+		<div class="container">
+			<div class="row row-bottom-padded-sm">
+				<div class="col-md-12 section-heading text-center">
+					<h2 class="to-animate">Got Feedback?</h2>
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 to-animate">
+							<h3>Tell Chris in person, he didn't feel like coding this contact form.</h3><h3>Also, bring him pizza.</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+			
+		
+		
 
-        
-        
-        
-        </form>
-        
-    </div>
-    <!-- end of container -->
-    
-<script>
-/* ------------------------------------------------------- 
+</form>
+</div>
 
-* Angular Script
+	<footer id="footer" role="contentinfo">
+		<div class="container">
+			<div class="row row-bottom-padded-sm">
+				<div class="col-md-12 text-center">
+					<p>Made by Chris</p>
+				</div>
+			</div>
 
----------------------------------------------------------*/
+		</div>
+	</footer>
 
-
-
-
-var app = angular.module('angularjs-starter', []);
-
-  app.config(function($interpolateProvider, $httpProvider){         
-        $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-    })
-
-  app.controller('MainCtrl', function($scope) {
-
-  $scope.choices = [{id: 'choice1'}];
-  
-  $scope.jobTypes = [
-    {name:'Server', id:'server'},
-    {name:'Host', id:'host'},
-    {name:'Swing', id:'swing'},
-  ];
-  
-  $scope.addNewChoice = function() {
-    var newItemNo = $scope.choices.length+1;
-    $scope.choices.push({'id':'choice'+newItemNo});
-  };
-  
-  $scope.sendInfo = function() {
-    console.log($scope.choices);
-  };
-    
-  $scope.removeChoice = function() {
-    var lastItem = $scope.choices.length-1;
-    $scope.choices.splice(lastItem);
-  };
-  
-  $scope.services = [
-    {ServiceID: 'server', ServiceName: 'Server'},
-    {ServiceID: 'host', ServiceName: 'Host'},
-    {ServiceID: 'swing', ServiceName: 'Swing'},
-  ];
-  
- 
-     
-  
-  
-  
-});
-  
-  
-  
- 
-  
-</script>
+	
+	
 
 
-</body>
+	
+	<!-- jQuery -->
+	<script src="static/js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="static/js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="static/js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="static/js/jquery.waypoints.min.js"></script>
+	<!-- Owl Carousel -->
+	<script src="static/js/owl.carousel.min.js"></script>
+
+	
+
+	<!-- Main JS (Do not remove) -->
+	<script src="static/js/main.js"></script>
+	
+
+
+	<script>
+	/* ------------------------------------------------------- 
+	
+	* Angular Script
+	
+	---------------------------------------------------------*/
+
+	
+	var app = angular.module('angularjs-starter', []);
+	
+	  app.config(function($interpolateProvider, $httpProvider){         
+			$interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+		})
+	
+	  app.controller('MainCtrl', function($scope) {
+	
+	  $scope.choices = [{id: 'choice1'}];
+	  
+	  $scope.jobTypes = [
+		{name:'Server', id:'server'},
+		{name:'Host', id:'host'},
+		{name:'Swing', id:'swing'},
+	  ];
+	  
+	  $scope.addNewChoice = function() {
+		var newItemNo = $scope.choices.length+1;
+		$scope.choices.push({'id':'choice'+newItemNo});
+	  };
+	  
+	  $scope.sendInfo = function() {
+		console.log($scope.choices);
+	  };
+		
+	  $scope.removeChoice = function() {
+		var lastItem = $scope.choices.length-1;
+		$scope.choices.splice(lastItem);
+	  };
+	  
+	  $scope.services = [
+		{ServiceID: 'server', ServiceName: 'Server'},
+		{ServiceID: 'host', ServiceName: 'Host'},
+		{ServiceID: 'swing', ServiceName: 'Swing'},
+	  ];
+	  
+	 
+		 
+	  
+	  
+	  
+	});
+	  
+	  
+	  
+	 
+	  
+	</script>
+</div>
+	</body>
+</html>

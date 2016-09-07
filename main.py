@@ -9,7 +9,7 @@ import traceback
 app = Flask(__name__)
 app.secret_key = 'itsasecret'
 
-
+### for future auth
 def check_auth(username, password):
     """This function is called to check if a username /
     password combination is valid.
@@ -30,17 +30,19 @@ def requires_auth(f):
             return authenticate()
         return f(*args, **kwargs)
     return decorated
+###
 
-# Define a route for the default URL, which loads the form
+#index route
 @app.route('/')
 def index():
     return render_template('index.html')
 
 
+#server route
 @app.route('/server', methods=['POST', 'GET'])
 def server():
     if request.method == "GET":
-        return render_template('serve3.html')
+        return render_template('serve.html')
     else:
             
 
@@ -94,13 +96,15 @@ def server():
             
             flash('Something went wrong! Check your numbers and try again.')
             print(error)
-            return render_template('serve3.html')
+            return render_template('serve.html')
 
+#archive route
 @app.route('/archive')
 @requires_auth
 def archive():
     return 'Test'
-        
+
+#error handler routes        
 @app.errorhandler(404)
 def page_not_found(e):
     return "template not found"
@@ -108,7 +112,6 @@ def page_not_found(e):
 """
 @app.errorhandler(500)
 def oops(e):
-    flash('You did not fill out the form correctly, there are empty fields or invalid entries.')
     return render_template('index.html')
 """
 
