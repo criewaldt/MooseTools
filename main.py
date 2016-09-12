@@ -109,13 +109,14 @@ def archive():
 def page_not_found(e):
     return "template not found"
 
-"""
+
 @app.errorhandler(500)
 def oops(e):
+    print(e)
     return render_template('index.html')
-"""
+
 
 # Run the app :)
 if __name__ == '__main__':
     #app.run() 
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', threaded=True)
