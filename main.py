@@ -113,7 +113,9 @@ def page_not_found(e):
 @app.errorhandler(500)
 def oops(e):
     print(e)
-    return render_template('index.html')
+    return "There was an error with your request. It looks like you may have input the wrong numbers, try again."
+
+    #return render_template('index.html')
 
 
 # Run the app :)
