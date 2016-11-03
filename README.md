@@ -1,17 +1,17 @@
 #Moose Tools
-A full stack webapp designed by Chris Riewaldt to automate and simplify processes at the Tattooed Moose.
+A full stack webapp designed by Chris Riewaldt to automate and simplify processes at the Tattooed Moose
 
 ##Ingredients
-Flask, AngularJS, and HTML5. Served by a Raspberry Pi, accessible locally via WiFi.
+Raspberry Pi B+ serving Flask, with AngularJS & HTML5. Accessible locally via WiFi on .local domain
 
-###** With help from: **
-Assign .local domain to host: http://www.howtogeek.com/167190/how-and-why-to-assign-the-.local-domain-to-your-raspberry-pi/
+###With help from
+[Assign .local domain to host](http://www.howtogeek.com/167190/how-and-why-to-assign-the-.local-domain-to-your-raspberry-pi)
 
-Change hostname of pi: http://www.howtogeek.com/167195/how-to-change-your-raspberry-pi-or-other-linux-devices-hostname/
+[Change hostname of pi](http://www.howtogeek.com/167195/how-to-change-your-raspberry-pi-or-other-linux-devices-hostname/)
 
-Bootstrap Theme: http://freehtml5.co/crew-free-html5-bootstrap-template/
+[Bootstrap Theme](http://freehtml5.co/crew-free-html5-bootstrap-template/)
 
-###** Future help: **
+###Future help
 nginx, gunicorn & flask:
 
 https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-14-04
