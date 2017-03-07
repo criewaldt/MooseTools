@@ -1,5 +1,5 @@
 #Moose Tools
-A full stack webapp designed by Chris Riewaldt to automate and simplify processes at the Tattooed Moose
+A full stack webapp (hosted on a Raspberry Pi) designed to simplify work processes for the Tattooed Moose (John's Island, SC)
 
 ##Ingredients
 Raspberry Pi B+ serving Flask, with AngularJS & HTML5. Accessible locally via WiFi on .local domain
